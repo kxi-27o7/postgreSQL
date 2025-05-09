@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <a href="/todo/create">Add a New Task</a>
+    
+    <hr>
+
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="/todo/read/{{ post.id }}/">{{ post.title }}</a> - {{ post.desc }}
+                    <a href="{% url 'todo_update' post.id %}">✏ Edit</a>
+                    <a href="{% url 'todo_delete' post.id %}" onclick="return confirm('Yakin mau hapus?')">🗑 Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts found.</p>
+    {% endif %}
+
+</body>
+</html>
