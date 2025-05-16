@@ -16,9 +16,9 @@ def view(request , post_id):
         post = post[0]
 
         title = request.POST.get('title')
-        desc = request.POST.get('desc')
+        content = request.POST.get('content')
 
-        query("UPDATE todo_post SET title = %s, desc = %s WHERE id = %s" , [title , desc , post_id])
+        query("UPDATE todo_post SET title = %s, content = %s WHERE id = %s" , [title , content , post_id])
 
         return redirect(f"/todo/read/{post_id}/")
     
